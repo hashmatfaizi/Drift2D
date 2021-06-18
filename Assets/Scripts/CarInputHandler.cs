@@ -11,12 +11,12 @@ public class CarInputHandler : MonoBehaviour
     public Button BtnRight;
     //Components
     TopDownCarController topDownCarController;
-    Vector2 andoidAxis;
+    public static Vector2 andoidAxis;
 
-    bool upPressed;
-    bool downPressed;
-    bool leftPressd;
-    bool rightLeft;
+    public static bool UpIsPressed = false;
+    public static bool DownIsPressed = false;
+    public static bool RightIsPressed = false;
+    public static bool LeftIsPressed = false;
 
     //Awake is called when the script instance is being loaded.
     void Awake()
@@ -29,33 +29,15 @@ public class CarInputHandler : MonoBehaviour
     void Update()
     {
         Vector2 inputVector = Vector2.zero;
-        
+
         //Get input from Unity's input system.
-        inputVector.x = Input.GetAxis("Horizontal");        
-        inputVector.y = Input.GetAxis("Vertical");
-        
+        /*inputVector.x = Input.GetAxis("Horizontal");
+        inputVector.y = Input.GetAxis("Vertical");*/
+
+        inputVector.x = andoidAxis.x;
+        inputVector.y = andoidAxis.y;
 
         //Send the input to the car controller.
         topDownCarController.SetInputVector(inputVector);
-    }
-    
-    public void BtnUpIsPreesd()
-    {
-
-    }
-
-    public void BtnDownIsPreesd()
-    {
-
-    }
-
-    public void BtnLeftIsPreesd()
-    {
-
-    }
-
-    public void BtnRightIsPreesd()
-    {
-
     }
 }
